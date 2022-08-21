@@ -9,16 +9,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
   }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  ol,
-  li,
-  ul {
-    list-style: none;
-  }
   textarea {
     resize: none;
     outline: none;
@@ -29,7 +19,6 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     box-sizing: border-box;
-    background: none;
   }
   button {
     background: none;
