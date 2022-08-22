@@ -56,12 +56,13 @@ export const Wrapper = styled.div`
       input {
         width: 100%;
         height: 35px;
-        border-radius: 15px;
+        border-radius: 8px;
         background: #fff;
         padding: 10px;
         margin-bottom: 5px;
       }
       p {
+        margin: 5px 0 0 5px;
         font-size: 0.7rem;
         color: #555;
       }

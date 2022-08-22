@@ -12,12 +12,12 @@ export default function TodoPage() {
     if (!localStorage.getItem('access_token')) {
       navigate('/');
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <Wrapper>
       <div>
-        <h2>오늘 할 일</h2>
+        <h2>할 일</h2>
         <ListTodo list={list} setList={setList} />
         <CreateTodo setList={setList} />
       </div>
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   align-items: center;
 
   > div {
-    width: 50%;
+    width: 350px;
     height: 100%;
     border: 1px solid gray;
     border-radius: 20px;

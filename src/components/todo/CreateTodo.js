@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default function CreateTodo(props) {
+export default function CreateTodo({ setList }) {
   const [todo, setTodo] = useState('');
   const [createList, setCreateList] = useState('');
 
@@ -44,8 +44,8 @@ export default function CreateTodo(props) {
   };
 
   useEffect(() => {
-    createList && props.setList(prev => [...prev, createList]);
-  }, [createList]);
+    createList && setList(prev => [...prev, createList]);
+  }, [setList, createList]);
 
   return (
     <CreateList method="post" onSubmit={event => onClickCreateListTodo(event)}>
