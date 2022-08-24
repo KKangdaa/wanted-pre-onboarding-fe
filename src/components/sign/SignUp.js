@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-export default function SignUp() {
+export default function SignUp({ onClickChangeForm, setIsChangeForm }) {
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -15,7 +15,9 @@ export default function SignUp() {
   const onClickSignUp = async event => {
     event.preventDefault();
 
-    if (handleValidation()) {
+    const ok = window.confirm('가입하시겠습니까?');
+
+    if (handleValidation() && ok) {
       const { email, password } = values;
       await axios
         .post(
@@ -33,6 +35,7 @@ export default function SignUp() {
             email: '',
             password: '',
           });
+          setIsChangeForm(prev => !prev);
         })
         .catch(error => {
           alert(error.response.data.message);
@@ -79,7 +82,9 @@ export default function SignUp() {
         />
         <p>* 비밀번호는 8자 이상 입력 바랍니다</p>
       </div>
-      <button disabled={isActive}>로그인</button>
+      <button disabled={isActive}>회원가입</button>
+      <br />
+      <p onClick={onClickChangeForm}>로그인</p>
     </form>
   );
 }

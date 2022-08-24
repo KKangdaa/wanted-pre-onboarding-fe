@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SignIn from '../components/sign/SignIn';
@@ -6,32 +6,48 @@ import SignUp from '../components/sign/SignUp';
 
 export default function MainPage() {
   const navigate = useNavigate();
+  const [isChangeForm, setIsChangeForm] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('access_token')) {
+    if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate('/todo');
     }
-  }, [navigate]);
+  });
+
+  const onClickChangeForm = () => {
+    setIsChangeForm(prev => !prev);
+  };
 
   return (
     <Wrapper>
-      <SignIn />
-      <SignUp />
+      {isChangeForm === false ? (
+        <SignIn onClickChangeForm={onClickChangeForm} />
+      ) : (
+        <SignUp
+          onClickChangeForm={onClickChangeForm}
+          setIsChangeForm={setIsChangeForm}
+        />
+      )}
     </Wrapper>
   );
 }
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -0%);
 
   > form {
-    width: 40%;
-    background-color: beige;
-    padding: 50px 20px 40px;
+    width: 300px;
+    height: 380px;
+    border: 2px solid #abcbff;
+    padding: 50px 20px 30px;
     margin: 20px;
     border-radius: 20px;
     display: flex;
@@ -46,6 +62,9 @@ export const Wrapper = styled.div`
     > div {
       width: 100%;
       margin-bottom: 20px;
+      &:last-of-type {
+        margin-bottom: 10px;
+      }
 
       span {
         font-size: 0.875rem;
@@ -57,7 +76,7 @@ export const Wrapper = styled.div`
         width: 100%;
         height: 35px;
         border-radius: 8px;
-        background: #fff;
+        border: 1px solid #abcbff;
         padding: 10px;
         margin-bottom: 5px;
       }
@@ -68,11 +87,23 @@ export const Wrapper = styled.div`
       }
     }
     button {
-      margin-top: 20px;
-      width: 100px;
+      margin-top: 10px;
+      width: 90px;
       height: 35px;
       border-radius: 20px;
-      border: 1px solid #000;
+      background-color: #abcbff;
+      color: #fff;
+
+      &:disabled {
+        border: 1px solid #abcbff;
+        background-color: #fff;
+        color: #abcbff;
+      }
+    }
+    > p {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      cursor: pointer;
     }
   }
 `;

@@ -20,7 +20,9 @@ export default function CreateTodo({ setList }) {
           { todo },
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              Authorization: `Bearer ${localStorage.getItem(
+                process.env.REACT_APP_LOCALHOST_KEY,
+              )}`,
               'Content-type': 'application/json',
             },
           },
@@ -64,6 +66,7 @@ const CreateList = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 
   > input {
     width: 100%;

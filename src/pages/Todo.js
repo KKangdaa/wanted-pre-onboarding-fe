@@ -9,10 +9,10 @@ export default function TodoPage() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.getItem('access_token')) {
+    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate('/');
     }
-  }, [navigate]);
+  });
 
   return (
     <Wrapper>
@@ -27,20 +27,23 @@ export default function TodoPage() {
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  height: 100vh;
+  position: relative;
 
   > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
     width: 350px;
-    height: 100%;
-    border: 1px solid gray;
+    min-height: 420px;
+    border: 2px solid #abcbff;
     border-radius: 20px;
     padding: 20px;
     margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 
     h2 {
       margin-bottom: 10px;

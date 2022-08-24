@@ -11,7 +11,9 @@ export default function ListTodo({ list, setList }) {
           'https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos',
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              Authorization: `Bearer ${localStorage.getItem(
+                process.env.REACT_APP_LOCALHOST_KEY,
+              )}`,
             },
           },
         )
@@ -34,7 +36,9 @@ export default function ListTodo({ list, setList }) {
           `https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${event.target.id}`,
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              Authorization: `Bearer ${localStorage.getItem(
+                process.env.REACT_APP_LOCALHOST_KEY,
+              )}`,
             },
           },
         )
@@ -60,7 +64,6 @@ export default function ListTodo({ list, setList }) {
 }
 
 const TodoList = styled.ul`
-  padding: 10px 0;
   > div {
     display: flex;
     justify-content: space-between;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignIn() {
+export default function SignIn({ onClickChangeForm }) {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     email: '',
@@ -31,7 +31,10 @@ export default function SignIn() {
         )
         .then(res => {
           alert('로그인이 완료되었습니다');
-          localStorage.setItem('access_token', res.data.access_token);
+          localStorage.setItem(
+            process.env.REACT_APP_LOCALHOST_KEY,
+            res.data.access_token,
+          );
           navigate(`/todo`);
         })
         .catch(error => {
@@ -40,7 +43,7 @@ export default function SignIn() {
     }
   };
 
-  const handleValidation = event => {
+  const handleValidation = () => {
     const { email, password } = values;
     if (email === '' && password === '') {
       alert('빈칸을 채워주세요');
@@ -68,7 +71,6 @@ export default function SignIn() {
           onChange={event => handleChange(event)}
         />
       </div>
-
       <div>
         <span>비밀번호</span>
         <input
@@ -79,6 +81,8 @@ export default function SignIn() {
         />
       </div>
       <button disabled={isActive}>로그인</button>
+      <br />
+      <p onClick={onClickChangeForm}>회원가입</p>
     </form>
   );
 }

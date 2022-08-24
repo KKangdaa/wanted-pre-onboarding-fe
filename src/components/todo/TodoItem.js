@@ -22,7 +22,9 @@ export default function TodoItem({ el, onClickDelete }) {
           },
           {
             headers: {
-              Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+              Authorization: `Bearer ${localStorage.getItem(
+                process.env.REACT_APP_LOCALHOST_KEY,
+              )}`,
               'Content-type': 'application/json',
             },
           },
@@ -52,7 +54,9 @@ export default function TodoItem({ el, onClickDelete }) {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            Authorization: `Bearer ${localStorage.getItem(
+              process.env.REACT_APP_LOCALHOST_KEY,
+            )}`,
             'Content-type': 'application/json',
           },
         },
