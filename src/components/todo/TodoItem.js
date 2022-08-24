@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { API_BASE_URL } from '../../api/api';
 
 export default function TodoItem({ el, onClickDelete }) {
   const [isEdit, setIsEdit] = useState(false);
@@ -15,7 +16,7 @@ export default function TodoItem({ el, onClickDelete }) {
     if (todo !== el.todo) {
       await axios
         .put(
-          `https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${event.target.id.toString()}`,
+          `${API_BASE_URL}/todos/${event.target.id}`,
           {
             todo,
             isCompleted,
@@ -47,7 +48,7 @@ export default function TodoItem({ el, onClickDelete }) {
 
     await axios
       .put(
-        `https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${event.target.id}`,
+        `${API_BASE_URL}/todos/${event.target.id}`,
         {
           todo: el.todo,
           isCompleted,

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../../api/api';
 
 export default function SignIn({ onClickChangeForm }) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function SignIn({ onClickChangeForm }) {
       const { email, password } = values;
       await axios
         .post(
-          'https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin',
+          `${API_BASE_URL}/auth/signin`,
           { email, password },
           {
             headers: {

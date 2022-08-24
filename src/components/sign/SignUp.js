@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { API_BASE_URL } from '../../api/api';
 
 export default function SignUp({ onClickChangeForm, setIsChangeForm }) {
   const [values, setValues] = useState({
@@ -21,7 +22,7 @@ export default function SignUp({ onClickChangeForm, setIsChangeForm }) {
       const { email, password } = values;
       await axios
         .post(
-          'https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signup',
+          `${API_BASE_URL}/auth/signup`,
           { email, password },
           {
             headers: {

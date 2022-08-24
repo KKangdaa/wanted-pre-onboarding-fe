@@ -1,22 +1,20 @@
 import axios from 'axios';
 import { Fragment, useEffect } from 'react';
 import styled from 'styled-components';
+import { API_BASE_URL } from '../../api/api';
 import TodoItem from './TodoItem';
 
 export default function ListTodo({ list, setList }) {
   useEffect(() => {
     const todoList = async () => {
       await axios
-        .get(
-          'https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos',
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem(
-                process.env.REACT_APP_LOCALHOST_KEY,
-              )}`,
-            },
+        .get(`${API_BASE_URL}/todos`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+              process.env.REACT_APP_LOCALHOST_KEY,
+            )}`,
           },
-        )
+        })
         .then(res => {
           setList(res.data);
         })
@@ -32,16 +30,13 @@ export default function ListTodo({ list, setList }) {
 
     if (ok) {
       await axios
-        .delete(
-          `https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${event.target.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem(
-                process.env.REACT_APP_LOCALHOST_KEY,
-              )}`,
-            },
+        .delete(`${API_BASE_URL}/todos/${event.target.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem(
+              process.env.REACT_APP_LOCALHOST_KEY,
+            )}`,
           },
-        )
+        })
         .then(() => {
           alert('삭제되었습니다');
           window.location.reload();

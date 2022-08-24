@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { API_BASE_URL } from '../../api/api';
 
 export default function CreateTodo({ setList }) {
   const [todo, setTodo] = useState('');
@@ -16,7 +17,7 @@ export default function CreateTodo({ setList }) {
     if (handleValidation()) {
       await axios
         .post(
-          'https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos',
+          `${API_BASE_URL}/todos`,
           { todo },
           {
             headers: {
