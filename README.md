@@ -21,7 +21,7 @@ npm start
 
 #### Assignment1
 
-![demo](./public/images/demo_join.gif)
+![demo](./client/public/images/demo_join.gif)
 
 - 이메일과 비밀번호의 유효성 검사기능을 구현해주세요
   - 이메일 조건: `@` 포함
@@ -31,7 +31,7 @@ npm start
 
 #### Assignment2
 
-![demo](./public/images/demo_login.gif)
+![demo](./client/public/images/demo_login.gif)
 
 - 로그인 API를 호출하고, 올바른 응답을 받았을 때 `/todo` 경로로 이동해주세요
   - 로그인 API는 로그인이 성공했을 시 Response Body에 JWT를 포함해서 응답합니다.
@@ -39,7 +39,7 @@ npm start
 
 #### Assignment3
 
-![demo](./public/images/demo_todo.gif)
+![demo](./client/public/images/demo_todo.gif)
 
 - 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
   - 로컬 스토리지에 토큰이 있는 상태로 `/` 페이지에 접속한다면 `/todo` 경로로 리다이렉트 시켜주세요
@@ -49,7 +49,7 @@ npm start
 
 ### :: 2. 투두 리스트
 
-![demo](./public/images/demo_todo.gif)
+![demo](./client/public/images/demo_todo.gif)
 
 #### Assignment4
 
