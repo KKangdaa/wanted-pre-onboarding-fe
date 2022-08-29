@@ -4,6 +4,7 @@
 
 ```bash
 git clone https://github.com/KKangdaa/wanted-pre-onboarding-fe.git
+cd client
 npm insall
 npm start
 ```
